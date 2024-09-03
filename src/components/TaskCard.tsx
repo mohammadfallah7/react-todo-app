@@ -9,7 +9,7 @@ interface Props {
 
 const TaskCard = ({ task, onDelete, onComplete }: Props) => {
   return (
-    <li className="flex items-center justify-between mb-5">
+    <li className="flex items-center justify-between mb-8">
       <div className="flex items-center gap-6">
         <input
           type="checkbox"
@@ -19,7 +19,7 @@ const TaskCard = ({ task, onDelete, onComplete }: Props) => {
         />
         <p className={`${task.isCompleted && "line-through"}`}>{task.title}</p>
         <div className="badge badge-neutral px-6 py-3 rounded">
-          {task.category}
+          {task.category || "Uncategorized"}
         </div>
       </div>
       <BsTrash3

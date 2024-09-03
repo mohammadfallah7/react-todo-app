@@ -8,7 +8,7 @@ const scheme = z.object({
     .string()
     .min(3, "Task title should be at least 3 characters.")
     .max(40, "Task title should be less than 40 characters"),
-  category: z.enum(["All", "Groceries", "College", "Payments"], {
+  category: z.enum(["", "Groceries", "College", "Payments"], {
     message: "Select category",
   }),
 });
@@ -35,7 +35,7 @@ const TaskForm = ({ onSubmit }: Props) => {
   };
 
   return (
-    <form className="my-8" onSubmit={handleSubmit(submitForm)}>
+    <form className="mt-8" onSubmit={handleSubmit(submitForm)}>
       <input
         {...register("title")}
         type="text"
@@ -52,7 +52,6 @@ const TaskForm = ({ onSubmit }: Props) => {
         defaultValue="Uncategorized"
       >
         <option value="">Pick your category</option>
-        <option value="All">All</option>
         <option value="Groceries">Groceries</option>
         <option value="College">College</option>
         <option value="Payments">Payments</option>

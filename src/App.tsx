@@ -20,7 +20,7 @@ const App = () => {
           onSelectCategory={(category) => setSelectedCategory(category)}
         />
       </div>
-      <div className="col-span-6 sm:col-span-5 sm:border-l sm:pl-12">
+      <div className="col-span-6 sm:col-span-5 sm:border-l sm:pl-12 relative h-screen">
         <TaskView
           onCreateTask={(task) => setTasks([task, ...tasks])}
           onDeleteTask={(id: number) =>
