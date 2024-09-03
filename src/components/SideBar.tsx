@@ -6,7 +6,7 @@ interface Props {
 const SideBar = ({ selectedCategory, onSelectCategory }: Props) => {
   return (
     <ul
-      className="menu menu-md lg:menu-lg mt-10"
+      className="menu menu-md lg:menu-lg mt-36"
       onClick={(event) =>
         onSelectCategory((event.target as HTMLLinkElement).textContent || "")
       }

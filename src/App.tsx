@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SideBar from "./components/SideBar";
+import TaskView from "./components/TaskView";
 
 const App = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
@@ -12,7 +13,9 @@ const App = () => {
           onSelectCategory={(category) => setSelectedCategory(category)}
         />
       </div>
-      <div className="col-span-6 sm:col-span-5">Main</div>
+      <div className="col-span-6 sm:col-span-5 sm:pl-24">
+        <TaskView selectedCategory={selectedCategory} />
+      </div>
     </div>
   );
 };
