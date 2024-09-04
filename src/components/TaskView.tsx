@@ -6,17 +6,15 @@ import TaskTitle from "./TaskTitle";
 
 interface Props {
   tasks: Task[];
-  selectedCategory: string;
 }
 
-const TaskView = ({ tasks, selectedCategory }: Props) => {
+const TaskView = ({ tasks }: Props) => {
   return (
     <>
-      <TaskTitle selectedCategory={selectedCategory} />
+      <TaskTitle />
       <TaskForm />
 
       {tasks.length === 0 && <TaskEmpty />}
-
       <ul className="mt-16">
         {tasks.map((task) => (
           <TaskCard key={task.id} task={task} />

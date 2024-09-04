@@ -1,9 +1,9 @@
-interface Props {
-  selectedCategory: string;
-}
+import useCategoryStore from "../stores/CategoryStore";
 
-const TaskTitle = ({ selectedCategory = "All" }: Props) => {
-  return <h1 className="text-3xl mt-10">{selectedCategory} Tasks</h1>;
+const TaskTitle = () => {
+  const category = useCategoryStore((state) => state.category);
+
+  return <h1 className="text-3xl mt-10">{category} Tasks</h1>;
 };
 
 export default TaskTitle;
