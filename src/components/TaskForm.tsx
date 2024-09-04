@@ -2,6 +2,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Task } from "../types/task";
+import useTaskStore from "../stores/TaskStore";
 
 const scheme = z.object({
   title: z
@@ -15,11 +16,9 @@ const scheme = z.object({
 
 type TaskFormData = z.infer<typeof scheme>;
 
-interface Props {
-  onSubmit: (task: Task) => void;
-}
+const TaskForm = () => {
+  const createTask = useTaskStore((state) => state.createTask);
 
-const TaskForm = ({ onSubmit }: Props) => {
   const {
     handleSubmit,
     register,
@@ -30,7 +29,11 @@ const TaskForm = ({ onSubmit }: Props) => {
   });
 
   const submitForm = (data: FieldValues) => {
-    onSubmit(data as Task);
+    createTask({
+      ...(data as Task),
+      id: new Date().getTime(),
+      isCompleted: false,
+    });
     reset();
   };
 

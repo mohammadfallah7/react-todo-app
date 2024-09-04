@@ -1,13 +1,14 @@
+import useTaskStore from "../stores/TaskStore";
 import { Task } from "../types/task";
 import { BsTrash3 } from "react-icons/bs";
 
 interface Props {
   task: Task;
-  onDelete: (id: number) => void;
-  onComplete: (id: number) => void;
 }
 
-const TaskCard = ({ task, onDelete, onComplete }: Props) => {
+const TaskCard = ({ task }: Props) => {
+  const { deleteTask, doneTask } = useTaskStore();
+
   return (
     <li className="flex items-center justify-between mb-8">
       <div className="flex items-center gap-6">
@@ -15,7 +16,7 @@ const TaskCard = ({ task, onDelete, onComplete }: Props) => {
           type="checkbox"
           defaultChecked={task.isCompleted}
           className="checkbox"
-          onChange={() => onComplete(task.id)}
+          onChange={() => doneTask(task.id)}
         />
         <p className={`${task.isCompleted && "line-through"}`}>{task.title}</p>
         <div className="badge badge-neutral px-6 py-3 rounded">
@@ -25,7 +26,7 @@ const TaskCard = ({ task, onDelete, onComplete }: Props) => {
       <BsTrash3
         size={19}
         className="cursor-pointer"
-        onClick={() => onDelete(task.id)}
+        onClick={() => deleteTask(task.id)}
       />
     </li>
   );
