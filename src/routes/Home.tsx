@@ -1,7 +1,7 @@
-import SideBar from "./components/SideBar";
-import TaskView from "./components/TaskView";
-import useTaskStore from "./stores/TaskStore";
-import useCategoryStore from "./stores/CategoryStore";
+import SideBar from "../components/SideBar";
+import TaskView from "../components/TaskView";
+import useTaskStore from "../stores/TaskStore";
+import useCategoryStore from "../stores/CategoryStore";
 
 const App = () => {
   const category = useCategoryStore((state) => state.category);

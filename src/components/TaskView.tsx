@@ -1,3 +1,4 @@
+import useTaskStore from "../stores/TaskStore";
 import { Task } from "../types/task";
 import TaskCard from "./TaskCard";
 import TaskEmpty from "./TaskEmpty";
@@ -9,10 +10,20 @@ interface Props {
 }
 
 const TaskView = ({ tasks }: Props) => {
+  const createTask = useTaskStore((state) => state.createTask);
+
   return (
     <>
       <TaskTitle />
-      <TaskForm />
+      <TaskForm
+        onSubmit={(data) =>
+          createTask({
+            ...data,
+            id: new Date().getTime(),
+            isCompleted: false,
+          })
+        }
+      />
 
       {tasks.length === 0 && <TaskEmpty />}
       <ul className="mt-16">

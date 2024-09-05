@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import useTaskStore from "../stores/TaskStore";
 import { Task } from "../types/task";
-import { BsTrash3 } from "react-icons/bs";
+import { BsPen, BsTrash3 } from "react-icons/bs";
 
 interface Props {
   task: Task;
@@ -23,11 +24,16 @@ const TaskCard = ({ task }: Props) => {
           {task.category || "Uncategorized"}
         </div>
       </div>
-      <BsTrash3
-        size={19}
-        className="cursor-pointer"
-        onClick={() => deleteTask(task.id)}
-      />
+      <div className="flex gap-6">
+        <Link to={`/tasks/${task.id}`}>
+          <BsPen size={19} />
+        </Link>
+        <BsTrash3
+          size={19}
+          className="cursor-pointer"
+          onClick={() => deleteTask(task.id)}
+        />
+      </div>
     </li>
   );
 };
